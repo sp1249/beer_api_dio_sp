@@ -149,6 +149,8 @@ public class BeerControllerTest {
                 .andExpect(status().isOk());
     }
 
+    
+
     @Test
     void whenDELETEIsCalledWithValidIdThenNoContentStatusIsReturned() throws Exception {
         // given

@@ -137,15 +137,16 @@ public class BeerServiceTest {
 
     @Test
     void whenExclusionIsCalledWithValidIdThenABeerShouldBeDeleted() throws BeerNotFoundException{
+
         // given
         BeerDTO expectedDeletedBeerDTO = BeerDTOBuilder.builder().build().toBeerDTO();
         Beer expectedDeletedBeer = beerMapper.toModel(expectedDeletedBeerDTO);
 
-        // when
+        // when...
         when(beerRepository.findById(expectedDeletedBeerDTO.getId())).thenReturn(Optional.of(expectedDeletedBeer));
         doNothing().when(beerRepository).deleteById(expectedDeletedBeerDTO.getId());
 
-        // then
+        // then...
         beerService.deleteById(expectedDeletedBeerDTO.getId());
 
         verify(beerRepository, times(1)).findById(expectedDeletedBeerDTO.getId());
